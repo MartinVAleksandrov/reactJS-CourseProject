@@ -9,6 +9,16 @@
   padding: 30px 40px;
 }
 
+.wrapper label {
+  font-size: 16px;
+  color: black;
+  margin: 20px;
+}
+
+.wrapper .errorLabel {
+  color: red;
+}
+
 .wrapper h1 {
   font-size: 36px;
   text-align: center;
@@ -19,7 +29,7 @@
   width: 83%;
   height: 30px;
   padding: 5px;
-  margin: 30px 0;
+  margin: 25px 0;
 }
 
 .inputbox input {

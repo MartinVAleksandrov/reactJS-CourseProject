@@ -14,12 +14,22 @@
   text-align: center;
 }
 
+.wrapper label {
+  font-size: 16px;
+  color: black;
+  margin: 20px;
+}
+
+.wrapper .errorLabel {
+  color: red;
+}
+
 .wrapper .inputbox {
   position: relative;
   width: 83%;
   height: 30px;
   padding: 5px;
-  margin: 30px 0;
+  margin: 25px 0;
 }
 
 .inputbox input {
@@ -29,7 +39,7 @@
   border: 2px solid rgb(255, 255, 255 0.2);
   border-radius: 40px;
   font-size: 16px;
-  color: #fff;
+  color: black;
   padding: 20px 45px 20px 20px;
 }
 
