@@ -10,3 +10,9 @@ Currently, two official plugins are available:
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+npm run dev - терминала в папката на проекта
+Set-ExecutionPolicy Unrestricted - ако не позволява да се стартира скрипт - в админ power shell
+json-server --watch db.json - терминала в ппапката на базата
+http://localhost:3000/gamePosts
+http://localhost:3000/registeredUsers

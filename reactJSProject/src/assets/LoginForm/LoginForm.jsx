@@ -8,6 +8,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
+  const [dbdata, setdbdata] = useState();
 
   const validateForm = () => {
     let errors = {};
@@ -31,14 +32,31 @@ const LoginForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log("Form submitted", { email, password });
-      navigate("/");
+      fetch("http://localhost:3000/registeredUsers")
+        .then((dbresult) => {
+          return dbresult.json();
+        })
+        .then((res) => {
+          setdbdata(res);
+        });
+      let user = dbdata.find((x) => x.email === email);
+      if (!user) {
+        errors.email = "User not found!";
+        setErrors(errors);
+      }
+
+      if (user.password === password) {
+        navigate("/");
+      } else {
+        errors.password = "Password is invalid";
+        setErrors(errors);
+      }
     }
   };
 
   return (
     <div className={styles.wrapper}>
-      <form onSubmit={handleSubmit}>
+      <form>
         <h1>Login</h1>
 
         <div className={styles.inputbox}>
@@ -67,7 +85,7 @@ const LoginForm = () => {
         </div>
         <br />
         <br />
-        <button type="submit">Login</button>
+        <button onClick={handleSubmit}>Login</button>
 
         <div className={styles.registerlink}>
           <p>
