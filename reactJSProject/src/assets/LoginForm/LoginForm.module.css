@@ -61,18 +61,18 @@
   font-weight: 700;
 }
 
-.wrapper .registerlink {
+.wrapper .loginlink {
   font-size: 14.5px;
   text-align: center;
   margin: 20px 0 15px;
 }
 
-.registerlink p a {
+.loginlink p a {
   color: #fff;
   text-decoration: none;
   font-weight: 600;
 }
 
-.registerlink p a:hover {
+.loginlink p a:hover {
   text-decoration: underline;
 }

@@ -1,45 +1,59 @@
 {
-   "gamePosts": [
-	{
-	"gameid": 1,
-	"gameTitle": "No Man's Sky",
-	"gameDescription": "No Man's Sky is an action-adventure survival game developed and published by Hello Games. It was released worldwide for the PlayStation 4 and Windows in August 2016, for Xbox One in July 2018, for the PlayStation 5 and Xbox Series X and Series S consoles in November 2020, for Nintendo Switch in October 2022, and for macOS in June 2023. The game is built around four pillars: exploration, survival, combat, and trading.",
-	"likes": 0
-	},	
-	{
-	"gameid": 2,
-	"gameTitle": "Ark: Survival Ascended",
-	"gameDescription": "ARK: Survival Ascended was announced in March 2023 to be released in August 2023, however this release window was then delayed until October 2023. Survival Evolved's official servers were set to be shut down at the same time, with the shutdown date being delayed until September 30, 2023 when Survival Ascended's release window was pushed back. Unlike previously stated by the studio co-founder, the remaster would not be a free upgrade. Survival Ascended was eventually released in early access for Windows on October 25, 2023, Xbox Series X/S on November 21, 2023, and PlayStation 5 on November 30, 2023",
-	"likes": 0
-	},
-	{
-	"gameid": 3,
-	"gameTitle": "Enlisted",
-	"gameDescription": "Enlisted is a free squad-based multiplayer tactical first-person shooter developed by Darkflow Software and published by Gaijin Entertainment. The game is set during World War II and revolves around major battles fought across all fronts of the war. It was an Xbox Series X/S launch title and timed console exclusive. On March 2, 2021, the closed beta went live on PlayStation 5. On April 8, 2021, the game was released on PC as an open beta test.",
-	"likes": 0
-	}
-   ],
-   "registeredUsers":[
-        {
-	"userid": 1,
-	"firstname": "Martin",
-	"lastname": "Aleksandrov",
-	"email": "martin@gmail.com",
-	"password": "administrator"
-	},
-        {
-	"userid": 2,
-	"firstname": "Aleksandar",
-	"lastname": "Martinov",
-	"email": "aleksandar@gmail.com",
-	"password": "administrator"
-	},
-        {
-	"userid": 3,
-	"firstname": "Petar",
-	"lastname": "Petrov",
-	"email": "petar@gmail.com",
-	"password": "administrator"
-	}
-   ]
+  "gamePosts": [
+    {
+      "id": "79f6",
+      "gameTitle": "No Man's Sky",
+      "gameDescription": "No Man's Sky is an action-adventure survival game developed and published by Hello Games. It was released worldwide for the PlayStation 4 and Windows in August 2016, for Xbox One in July 2018, for the PlayStation 5 and Xbox Series X and Series S consoles in November 2020, for Nintendo Switch in October 2022, and for macOS in June 2023. The game is built around four pillars: exploration, survival, combat, and trading.",
+      "likes": 0
+    },
+    {
+      "id": "dead",
+      "gameTitle": "Ark: Survival Ascended",
+      "gameDescription": "ARK: Survival Ascended was announced in March 2023 to be released in August 2023, however this release window was then delayed until October 2023. Survival Evolved's official servers were set to be shut down at the same time, with the shutdown date being delayed until September 30, 2023 when Survival Ascended's release window was pushed back. Unlike previously stated by the studio co-founder, the remaster would not be a free upgrade. Survival Ascended was eventually released in early access for Windows on October 25, 2023, Xbox Series X/S on November 21, 2023, and PlayStation 5 on November 30, 2023",
+      "likes": 0
+    },
+    {
+      "id": "cbcb",
+      "gameTitle": "Enlisted",
+      "gameDescription": "Enlisted is a free squad-based multiplayer tactical first-person shooter developed by Darkflow Software and published by Gaijin Entertainment. The game is set during World War II and revolves around major battles fought across all fronts of the war. It was an Xbox Series X/S launch title and timed console exclusive. On March 2, 2021, the closed beta went live on PlayStation 5. On April 8, 2021, the game was released on PC as an open beta test.",
+      "likes": 0
+    }
+  ],
+  "registeredUsers": [
+    {
+      "id": "39e3",
+      "firstname": "Martin",
+      "lastname": "Aleksandrov",
+      "email": "martin@gmail.com",
+      "password": "administrator"
+    },
+    {
+      "id": "69a6",
+      "firstname": "Aleksandar",
+      "lastname": "Martinov",
+      "email": "aleksandar@gmail.com",
+      "password": "administrator"
+    },
+    {
+      "id": "248d",
+      "firstname": "Petar",
+      "lastname": "Petrov",
+      "email": "petar@gmail.com",
+      "password": "administrator"
+    },
+    {
+      "id": "c751",
+      "firstName": "Martin",
+      "lastName": "MartinMartin",
+      "email": "martinmartin@gmail.com",
+      "password": "1234567"
+    },
+    {
+      "id": "5235",
+      "firstName": "Venci",
+      "lastName": "Vencov",
+      "email": "venci@gmail.com",
+      "password": "12345678"
+    }
+  ]
 }

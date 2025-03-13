@@ -8,7 +8,6 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
-  const [dbdata, setdbdata] = useState();
 
   const validateForm = () => {
     let errors = {};
@@ -29,27 +28,35 @@ const LoginForm = () => {
     return Object.keys(errors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      fetch("http://localhost:3000/registeredUsers")
-        .then((dbresult) => {
-          return dbresult.json();
-        })
-        .then((res) => {
-          setdbdata(res);
-        });
-      let user = dbdata.find((x) => x.email === email);
-      if (!user) {
-        errors.email = "User not found!";
-        setErrors(errors);
-      }
+      try {
+        const response = await fetch("http://localhost:3000/registeredUsers");
+        if (!response.ok) throw new Error("Failed to fetch users");
 
-      if (user.password === password) {
+        const users = await response.json();
+        const user = users.find((x) => x.email === email);
+
+        if (!user) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            email: "User not found!",
+          }));
+          return;
+        }
+
+        if (user.password !== password) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            password: "Password is invalid",
+          }));
+          return;
+        }
+
         navigate("/");
-      } else {
-        errors.password = "Password is invalid";
-        setErrors(errors);
+      } catch (error) {
+        navigate("/Error404");
       }
     }
   };
@@ -87,7 +94,7 @@ const LoginForm = () => {
         <br />
         <button onClick={handleSubmit}>Login</button>
 
-        <div className={styles.registerlink}>
+        <div className={styles.loginlink}>
           <p>
             Don't have an account? <Link to="/RegisterForm">Register</Link>
           </p>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import styles from "../RegisterForm/RegisterForm.module.css";
 
 const RegisterForm = () => {
@@ -44,17 +44,35 @@ const RegisterForm = () => {
     return Object.keys(errors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log("Registration successful", {
-        firstName,
-        lastName,
-        email,
-        password,
-      });
+      try {
+        const response = await fetch("http://localhost:3000/registeredUsers");
+        const users = await response.json();
 
-      navigate("/");
+        const existingUser = users.find((user) => user.email === email);
+        if (existingUser) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            email: "Email is already in use",
+          }));
+          return;
+        }
+
+        const newUser = { firstName, lastName, email, password };
+        await fetch("http://localhost:3000/registeredUsers", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newUser),
+        });
+
+        console.log("Registration successful", newUser);
+        navigate("/");
+      } catch (error) {
+        console.error("Error during registration:", error);
+        navigate("/Error404");
+      }
     }
   };
 
@@ -131,8 +149,13 @@ const RegisterForm = () => {
         <br />
         <br />
 
-        <button type="submit">Register</button>
+        <button>Register</button>
       </form>
+      <div className={styles.registerlink}>
+        <p>
+          Alredy have an account? <Link to="/">Login</Link>
+        </p>
+      </div>
     </div>
   );
 };
