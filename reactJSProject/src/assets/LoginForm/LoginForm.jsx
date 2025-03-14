@@ -54,7 +54,7 @@ const LoginForm = () => {
           return;
         }
 
-        navigate("/");
+        navigate("/Home");
       } catch (error) {
         navigate("/Error404");
       }

@@ -3,6 +3,7 @@ import LoginForm from "./assets/LoginForm/LoginForm";
 import { useRoutes } from "react-router-dom";
 import RegisterForm from "./assets/RegisterForm/RegisterForm";
 import Error404 from "./assets/Error404/Error404";
+import HomeForm from "./assets/Home/Home";
 
 function App() {
   const routes = useRoutes([
@@ -13,6 +14,10 @@ function App() {
     {
       path: "/RegisterForm",
       element: <RegisterForm />,
+    },
+    {
+      path: "/Home",
+      element: <HomeForm />,
     },
     {
       path: "/Error404",
