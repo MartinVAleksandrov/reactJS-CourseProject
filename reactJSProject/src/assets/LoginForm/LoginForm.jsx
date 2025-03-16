@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../LoginForm/LoginForm.module.css";
 import { Link } from "react-router-dom";
+import { UserContext } from "../UserContext/UserContext";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
+  const { setUser } = useContext(UserContext);
+
   const navigate = useNavigate();
 
   const validateForm = () => {
@@ -53,7 +56,7 @@ const LoginForm = () => {
           }));
           return;
         }
-
+        setUser(user.firstname);
         navigate("/Home");
       } catch (error) {
         navigate("/Error404");

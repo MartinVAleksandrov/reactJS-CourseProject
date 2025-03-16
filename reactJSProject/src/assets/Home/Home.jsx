@@ -1,35 +1,61 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../Home/Home.module.css";
-//import { UserContext } from "../context/UserContext";
+import { UserContext } from "../UserContext/UserContext";
 
 const HomeForm = () => {
   const navigate = useNavigate();
-  //const { user } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [games, setGames] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:3000/gamePosts")
       .then((response) => response.json())
       .then((data) => setGames(data))
-      .catch((error) => console.error("Error fetching games:", error));
+      .catch((error) => navigate("/Error404"));
   }, []);
 
   const handleLogout = (e) => {
     e.preventDefault();
-
     navigate("/");
   };
 
   const handleAddGame = () => {
-    navigate("/add-game");
+    navigate("/AddGame");
+  };
+
+  const handleEditGame = () => {
+    navigate("/Edit");
+  };
+
+  const handleDeleteGame = () => {
+    navigate("/Delete");
+  };
+
+  const handleLike = async (gameId) => {
+    const updatedGames = games.map((game) =>
+      game.id === gameId ? { ...game, likes: game.likes + 1 } : game
+    );
+    setGames(updatedGames);
+
+    try {
+      await fetch(`http://localhost:3000/gamePosts/${gameId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          likes: updatedGames.find((g) => g.id === gameId).likes,
+        }),
+      });
+    } catch (error) {
+      navigate("/Error404");
+    }
   };
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
         <h1>Popular games</h1>
-        <p>Welcome, Guest!</p>
+        <p>Welcome, {user ? user : "User"}!</p>
         <button onClick={handleAddGame}>Add new game</button>
         <button onClick={handleLogout}>Logout</button>
       </div>
@@ -38,14 +64,18 @@ const HomeForm = () => {
         {games.length > 0 ? (
           games.map((game) => (
             <div key={game.id} className={styles.gameItem}>
-              <button>Edit game</button>
-              <button>Delete game</button>
+              <div className={styles.topButtons}>
+                <button onClick={handleEditGame}>Edit game</button>
+                <button onClick={handleDeleteGame}>Delete game</button>
+              </div>
               <h3>{game.gameTitle}</h3>
               <p>{game.gameDescription}</p>
 
-              <button>
+              <button
+                className={styles.bottomButton}
+                onClick={() => handleLike(game.id)}
+              >
                 <img src="../../../public/like.svg" alt="like" />
-
                 {game.likes}
               </button>
             </div>
@@ -58,7 +88,7 @@ const HomeForm = () => {
       <div className={styles.footer}>
         <p>Martin Valentinov Aleksandrov &copy;</p>
         <p>Faculty №: 149ikz</p>
-        <p>149ikz@unibit.bg</p>
+        <p>E-mail: 149ikz@unibit.bg</p>
       </div>
     </div>
   );

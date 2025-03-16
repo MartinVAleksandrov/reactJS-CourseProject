@@ -70,7 +70,6 @@ const RegisterForm = () => {
         console.log("Registration successful", newUser);
         navigate("/");
       } catch (error) {
-        console.error("Error during registration:", error);
         navigate("/Error404");
       }
     }
