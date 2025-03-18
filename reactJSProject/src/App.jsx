@@ -5,7 +5,6 @@ import RegisterForm from "./assets/RegisterForm/RegisterForm";
 import Error404 from "./assets/Error404/Error404";
 import HomeForm from "./assets/Home/Home";
 import EditGame from "./assets/EditGame/EditGame";
-import DeleteGame from "./assets/DeleteGame/DeleteGame";
 import AddGame from "./assets/AddGame/AddGame";
 
 function App() {
@@ -29,10 +28,6 @@ function App() {
     {
       path: "/Edit",
       element: <EditGame />,
-    },
-    {
-      path: "/Delete",
-      element: <DeleteGame />,
     },
     {
       path: "/Error404",

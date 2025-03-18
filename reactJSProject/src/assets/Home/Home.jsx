@@ -28,8 +28,18 @@ const HomeForm = () => {
     navigate("/Edit");
   };
 
-  const handleDeleteGame = () => {
-    navigate("/Delete");
+  const handleDeleteGame = async (gameId) => {
+    if (!window.confirm("Are you sure you want to delete this game?")) return;
+
+    try {
+      await fetch(`http://localhost:3000/gamePosts/${gameId}`, {
+        method: "DELETE",
+      });
+
+      setGames((prevGames) => prevGames.filter((game) => game.id !== gameId));
+    } catch (error) {
+      navigate("/Error404");
+    }
   };
 
   const handleLike = async (gameId) => {
@@ -66,7 +76,9 @@ const HomeForm = () => {
             <div key={game.id} className={styles.gameItem}>
               <div className={styles.topButtons}>
                 <button onClick={handleEditGame}>Edit game</button>
-                <button onClick={handleDeleteGame}>Delete game</button>
+                <button onClick={() => handleDeleteGame(game.id)}>
+                  Delete game
+                </button>
               </div>
               <h3>{game.gameTitle}</h3>
               <p>{game.gameDescription}</p>

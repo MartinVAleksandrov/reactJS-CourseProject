@@ -17,6 +17,12 @@
       "gameTitle": "Enlisted",
       "gameDescription": "Enlisted is a free squad-based multiplayer tactical first-person shooter developed by Darkflow Software and published by Gaijin Entertainment. The game is set during World War II and revolves around major battles fought across all fronts of the war. It was an Xbox Series X/S launch title and timed console exclusive. On March 2, 2021, the closed beta went live on PlayStation 5. On April 8, 2021, the game was released on PC as an open beta test.",
       "likes": 4
+    },
+    {
+      "id": "generated-id",
+      "gameTitle": "Monster Hunter Rise",
+      "gameDescription": "Rise follows many of the new conventions established in Monster Hunter: World while also introducing new features and mechanics, including a new animal companion called a Palamute that can be used to ride across the map or into battle, and the use of Wirebugs to traverse the world and mount and ride certain monsters. The game received generally positive reviews upon release with critics praising the gameplay and its expansion of the mechanics introduced in World. It has sold more than 15 million copies worldwide since launch, making it the second best-selling game in the series. Sunbreak has sold more than 8 million copies since launch.",
+      "likes": 0
     }
   ],
   "registeredUsers": [
