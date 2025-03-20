@@ -73,9 +73,7 @@ const AddGame = () => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.header}>
-        <h1>Add a New Game</h1>
-      </div>
+      <h1>Add a New Game</h1>
 
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.inputbox}>

@@ -1,0 +1,74 @@
+.wrapper {
+  padding: 30px;
+  max-width: 860px;
+  margin: 20px auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-image: url("../../../public/download.jpg");
+  background-size: cover;
+  background-position: center;
+  font-family: Arial, sans-serif;
+}
+
+.wrapper h1 {
+  color: white;
+  text-align: center;
+  font-size: 28px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+label {
+  font-size: 18px;
+}
+
+input,
+textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 200px;
+  min-width: 840px;
+}
+
+.editGameButton:hover {
+  background-color: #2935b9;
+}
+
+.editGameButton {
+  min-width: 840px;
+  padding: 10px;
+  font-size: 16px;
+  text-align: center;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+.wrapper .errorLabel {
+  color: red;
+  font-size: 15px;
+  min-height: 18px;
+  display: inline-block;
+}
+
+.inputbox input {
+  min-width: 840px;
+}

@@ -24,8 +24,8 @@ const HomeForm = () => {
     navigate("/AddGame");
   };
 
-  const handleEditGame = () => {
-    navigate("/Edit");
+  const handleEditGame = (gameId) => {
+    navigate(`/Edit/${gameId}`);
   };
 
   const handleDeleteGame = async (gameId) => {
@@ -75,7 +75,9 @@ const HomeForm = () => {
           games.map((game) => (
             <div key={game.id} className={styles.gameItem}>
               <div className={styles.topButtons}>
-                <button onClick={handleEditGame}>Edit game</button>
+                <button onClick={() => handleEditGame(game.id)}>
+                  Edit game
+                </button>
                 <button onClick={() => handleDeleteGame(game.id)}>
                   Delete game
                 </button>
