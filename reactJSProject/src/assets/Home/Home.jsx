@@ -7,6 +7,8 @@ const HomeForm = () => {
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
   const [games, setGames] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedGame, setSelectedGame] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:3000/gamePosts")
@@ -24,22 +26,39 @@ const HomeForm = () => {
     navigate("/AddGame");
   };
 
+  const handleRegisteredUsers = () => {
+    navigate("/AddGame");
+  };
+
   const handleEditGame = (gameId) => {
     navigate(`/Edit/${gameId}`);
   };
 
-  const handleDeleteGame = async (gameId) => {
-    if (!window.confirm("Are you sure you want to delete this game?")) return;
+  const handleDeleteGame = async () => {
+    if (!selectedGame) return;
 
     try {
-      await fetch(`http://localhost:3000/gamePosts/${gameId}`, {
+      await fetch(`http://localhost:3000/gamePosts/${selectedGame.id}`, {
         method: "DELETE",
       });
 
-      setGames((prevGames) => prevGames.filter((game) => game.id !== gameId));
+      setGames((prevGames) =>
+        prevGames.filter((game) => game.id !== selectedGame.id)
+      );
+      closeModal();
     } catch (error) {
       navigate("/Error404");
     }
+  };
+
+  const openModal = (game) => {
+    setSelectedGame(game);
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    setSelectedGame(null);
   };
 
   const handleLike = async (gameId) => {
@@ -67,6 +86,7 @@ const HomeForm = () => {
         <h1>Popular games</h1>
         <p>Welcome, {user ? user : "User"}!</p>
         <button onClick={handleAddGame}>Add new game</button>
+        <button onClick={handleRegisteredUsers}>Registered users</button>
         <button onClick={handleLogout}>Logout</button>
       </div>
 
@@ -78,9 +98,7 @@ const HomeForm = () => {
                 <button onClick={() => handleEditGame(game.id)}>
                   Edit game
                 </button>
-                <button onClick={() => handleDeleteGame(game.id)}>
-                  Delete game
-                </button>
+                <button onClick={() => openModal(game)}>Delete game</button>
               </div>
               <h3>{game.gameTitle}</h3>
               <p>{game.gameDescription}</p>
@@ -102,8 +120,26 @@ const HomeForm = () => {
       <div className={styles.footer}>
         <p>Martin Valentinov Aleksandrov &copy;</p>
         <p>Faculty №: 149ikz</p>
-        <p>E-mail: 149ikz@unibit.bg</p>
+        <p>
+          E-mail: <a href="mailto:149ikz@unibit.bg">149ikz@unibit.bg</a>
+        </p>
       </div>
+
+      {showModal && (
+        <div className={styles.modalOverlay}>
+          <div className={styles.modal}>
+            <p>Are you sure you want to delete "{selectedGame?.gameTitle}"?</p>
+            <div className={styles.modalButtons}>
+              <button className={styles.btnDelete} onClick={handleDeleteGame}>
+                Yes, Delete
+              </button>
+              <button className={styles.btnCancel} onClick={closeModal}>
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
